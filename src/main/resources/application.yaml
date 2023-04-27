@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+  error:
+    whitelabel:
+      enabled: false
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:amething-server
+    driver-class-name: org.h2.Driver
+    username: sa
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+
+jwt:
+  accessTokenExpireTime: PT1H
+  refreshTokenExpireTime: P30D
+  secretKey: asdjfioasejfoiasdjfoicjv
+  type: Bearer
