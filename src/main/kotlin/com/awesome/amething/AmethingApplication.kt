@@ -13,4 +13,5 @@ class AmethingApplication
 
 fun main(args: Array<String>) {
 	runApplication<AmethingApplication>(*args)
+
 }
