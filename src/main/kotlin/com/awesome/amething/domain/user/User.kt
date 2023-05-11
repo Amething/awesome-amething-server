@@ -2,8 +2,6 @@ package com.awesome.amething.domain.user
 
 import com.awesome.amething.global.enums.AuthenticatorRole
 import jakarta.persistence.*
-import org.springframework.security.core.GrantedAuthority
-import org.springframework.security.core.authority.SimpleGrantedAuthority
 
 @Entity
 @Table(name = "user")
