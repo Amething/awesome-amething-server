@@ -8,24 +8,21 @@ import org.hibernate.annotations.OnDeleteAction
 
 @Entity
 @Table(name = "quesion")
-class Question (user: User, title : String, questionType : QuestionType = QuestionType.UNPIN){
-
-
+class Question (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "question_id")
-    val id : Long? = null
+    val id : Long? = null,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "user_id")
-    val user : User = user
+    val user : User = User(),
 
     @Column(name = "question_title")
-    var title : String = title
+    var title : String = "title",
 
     @Enumerated(value = EnumType.STRING)
     @Column(name = "question_type")
-    var questionType : QuestionType = questionType
-
-}
+    var questionType : QuestionType = QuestionType.UNPIN
+)
