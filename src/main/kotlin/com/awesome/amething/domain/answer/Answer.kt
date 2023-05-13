@@ -5,16 +5,16 @@ import jakarta.persistence.*
 
 @Entity
 @Table(name = "answer")
-class Answer (
+class Answer(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "answer_id")
-    val id : Long? = null,
+    val id: Long? = null,
 
     @OneToOne(fetch = FetchType.LAZY, cascade = [(CascadeType.ALL)])
     @JoinColumn(name = "question_id")
-    val question : Question = Question(),
+    val question: Question = Question(),
 
     @Column(name = "answer_description")
-    var description : String = "description"
+    var description: String = "description",
 )

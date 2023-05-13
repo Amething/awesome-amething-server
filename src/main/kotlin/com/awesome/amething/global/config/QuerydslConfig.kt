@@ -9,12 +9,11 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class QuerydslConfig(
     @PersistenceContext
-    private val entityManager: EntityManager
+    private val entityManager: EntityManager,
 ) {
 
     @Bean
     fun jpaQueryFactory(): JPAQueryFactory {
         return JPAQueryFactory(entityManager)
     }
-
 }
