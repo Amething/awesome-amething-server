@@ -12,6 +12,5 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 class AmethingApplication
 
 fun main(args: Array<String>) {
-	runApplication<AmethingApplication>(*args)
-
+    runApplication<AmethingApplication>(*args)
 }

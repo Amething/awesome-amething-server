@@ -6,7 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest
 @SpringBootTest
 class AmethingApplicationTests {
 
-	@Test
-	fun contextLoads() {}
-
+    @Test
+    fun contextLoads() {}
 }

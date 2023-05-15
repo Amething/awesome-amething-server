@@ -6,6 +6,7 @@ plugins {
 	kotlin("jvm") version "1.7.22"
 	kotlin("plugin.spring") version "1.7.22"
 	kotlin("plugin.jpa") version "1.7.22"
+	id("org.jmailen.kotlinter") version "3.14.0"
 }
 
 group = "amething"
