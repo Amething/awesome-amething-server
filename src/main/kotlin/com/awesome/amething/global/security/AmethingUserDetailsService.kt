@@ -1,8 +1,6 @@
 package com.awesome.amething.global.security
 
 import com.awesome.amething.domain.user.service.UserQueryService
-import com.awesome.amething.global.exception.AmethingException
-import com.awesome.amething.global.exception.ErrorCode
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException

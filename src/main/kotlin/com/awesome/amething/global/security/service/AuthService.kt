@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service
 class AuthService(
     private val userDetailsService: UserDetailsService,
     private val jwtProvider: JwtProvider,
-    private val passwordEncoder: PasswordEncoder
-): Loggable{
+    private val passwordEncoder: PasswordEncoder,
+) : Loggable {
 
     fun login(model: LoginDto.Input): LoginDto.Result {
         val userInfo = try {
@@ -26,8 +26,9 @@ class AuthService(
             throw AmethingException(ErrorCode.INVALID_LOGIN_INFO)
         }
 
-        if(!checkPassword(model, userInfo.password))
+        if (!checkPassword(model, userInfo.password)) {
             throw AmethingException(ErrorCode.INVALID_LOGIN_INFO)
+        }
 
         val roles = userInfo.authorities.map {
             AuthenticatorRole.valueOf(it.authority)
@@ -38,5 +39,4 @@ class AuthService(
 
     private fun checkPassword(model: LoginDto.Input, password: String?) =
         passwordEncoder.matches(model.password, password)
-
 }
