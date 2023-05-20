@@ -5,14 +5,14 @@ import com.awesome.amething.domain.user.User
 data class UserDto(
     val username: String,
     val password: String,
-    val nickName: String,
+    val nickname: String,
     val bio: String,
 ) {
     fun toEntity(password: String): User {
         return User(
             username = this.username,
             password = password,
-            nickname = this.nickName,
+            nickname = this.nickname,
             bio = this.bio,
         )
     }
