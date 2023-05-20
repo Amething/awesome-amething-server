@@ -5,14 +5,14 @@ import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 
-class UserDetailsImpl(
+class AmethingUserDetails(
     private val user: User
 ) : UserDetails {
     override fun getAuthorities(): Collection<GrantedAuthority> {
-        val grantedAuthorityRole = user.roles.map {
+        val stringRoles = user.roles.map {
             roles -> roles.name
         }
-        return grantedAuthorityRole.map {
+        return stringRoles.map {
             roleName -> SimpleGrantedAuthority(roleName)
         }
     }

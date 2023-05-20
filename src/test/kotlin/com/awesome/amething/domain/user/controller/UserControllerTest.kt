@@ -15,8 +15,8 @@ internal class UserControllerTest(
 ) : Loggable {
 
     @Test
-    fun userRegistration() {
+    fun register() {
         val userDto = UserDto("user", "registration", "test", "controller")
-        userController.userRegistration(userDto)
+        userController.register(userDto)
     }
 }
