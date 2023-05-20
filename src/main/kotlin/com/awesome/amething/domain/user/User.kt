@@ -49,4 +49,10 @@ class User(
 
     val id: Long
         get() = this._id!!
+
+    fun updateProfile(nickname: String, bio: String, profilePicture: String) {
+        this.nickname = nickname
+        this.bio = bio
+        this.profilePicture = profilePicture
+    }
 }

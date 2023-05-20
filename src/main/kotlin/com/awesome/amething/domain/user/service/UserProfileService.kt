@@ -1,5 +1,6 @@
 package com.awesome.amething.domain.user.service
 
+import com.awesome.amething.domain.user.model.UpdateUserProfileModel
 import com.awesome.amething.domain.user.model.UserProfile
 import com.awesome.amething.domain.user.repository.UserRepository
 import com.awesome.amething.global.exception.AmethingException
@@ -20,6 +21,15 @@ class UserProfileService(
             nickname = user.nickname,
             bio = user.bio,
             profilePicture = user.profilePicture
+        )
+    }
+    fun updateUserProfile(username: String, model: UpdateUserProfileModel.Model) {
+        val user = userRepository.findByUsername(username)
+            ?: throw AmethingException(ErrorCode.USER_NOT_FOUND)
+        user.updateProfile(
+            nickname = model.nickname,
+            bio = model.bio,
+            profilePicture = model.profilePicture
         )
     }
 }
