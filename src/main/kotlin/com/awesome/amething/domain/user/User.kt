@@ -14,7 +14,7 @@ import jakarta.persistence.JoinColumn
 import jakarta.persistence.Table
 
 @Entity
-@Table(name = "user")
+@Table(name = "amething_user")
 class User(
     @Column(name = "username", nullable = false, unique = true)
     var username: String = "username",
