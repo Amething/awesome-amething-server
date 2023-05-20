@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional
 class UserQueryService(
     private val userRepository: UserRepository,
 ) {
-    fun getUserByUsername(username: String): User {
+    fun getUserByUsername(username: String): User? {
         return userRepository.findByUsername(username)
     }
 }

@@ -2,6 +2,7 @@ package com.awesome.amething.global.security.jwt.provider
 
 import com.awesome.amething.global.enums.AuthenticatorRole
 import com.awesome.amething.global.security.jwt.config.JwtProperties
+import com.awesome.amething.global.security.jwt.model.TokenGenerateResult
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.ExpiredJwtException
 import io.jsonwebtoken.Jwts
@@ -18,6 +19,17 @@ class JwtProvider(
 
     private val secretKeyEncodingBase64: String =
         Base64.getEncoder().encodeToString(jwtProperties.secretKey.toByteArray())
+
+    fun createAccessAndRefreshToken(roles: List<AuthenticatorRole>): TokenGenerateResult {
+        val accessToken = createAccessToken(roles)
+        val refreshToken = createRefreshToken()
+        return TokenGenerateResult(
+            accessToken = accessToken,
+            accessTokenExpire = OffsetDateTime.now().plus(jwtProperties.accessTokenExpireTime),
+            refreshToken = refreshToken,
+            refreshTokenExpire = OffsetDateTime.now().plus(jwtProperties.refreshTokenExpireTime),
+        )
+    }
 
     fun createAccessToken(roles: List<AuthenticatorRole>): String {
         val accessTokenExpireTime = Date.from(
