@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/v1/user")
 class UserController @Autowired constructor(
-  private val userService : UserService
-  ) {
-    @ResponseStatus(HttpStatus.OK)
+    private val userService: UserService,
+) {
     @PostMapping("/registration")
-    fun userRegistration(@RequestBody userDto : UserDto) : ResponseEntity<HttpStatus>{
+    fun userRegistration(@RequestBody userDto: UserDto): ResponseEntity<HttpStatus> {
         userService.userRegistration(userDto)
         return ResponseEntity(HttpStatus.OK)
     }

@@ -10,12 +10,11 @@ import org.springframework.stereotype.Service
 @Service
 @Transactional
 class UserServiceImpl @Autowired constructor(
-    private val userRepository : UserRepository,
-    private val passwordEncoder: PasswordEncoder
-) : UserService{
+    private val userRepository: UserRepository,
+    private val passwordEncoder: PasswordEncoder,
+) : UserService {
     override fun userRegistration(userDto: UserDto) {
         userDto.password = this.passwordEncoder.encode(userDto.password)
         userRepository.save(userDto.toEntity())
     }
-
 }

@@ -1,24 +1,19 @@
 package com.awesome.amething.domain.user.dto
 
-import org.jetbrains.annotations.NotNull
+import com.awesome.amething.domain.user.User
 
 data class UserDto(
-
-    @field:NotNull
-    var username : String,
-    @field:NotNull
-    var password : String,
-
-    var nickName : String,
-
-    var bio : String
-){
-    fun toEntity() : com.awesome.amething.domain.user.User {
-        return com.awesome.amething.domain.user.User(
+    val username: String,
+    val password: String,
+    val nickName: String,
+    val bio: String,
+) {
+    fun toEntity(): User {
+        return User(
             username = username,
             password = password,
             nickName = nickName,
-            bio = bio
+            bio = bio,
         )
     }
 }

@@ -9,15 +9,14 @@ import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
 @Transactional
-internal class UserControllerTest
-    (
+internal class UserControllerTest(
     @Autowired
-    private val userController: UserController
-):Loggable   {
+    private val userController: UserController,
+) : Loggable {
 
     @Test
-    fun userRegistration(){
-        val userDto = UserDto("user","registration","test","controller")
+    fun userRegistration() {
+        val userDto = UserDto("user", "registration", "test", "controller")
         userController.userRegistration(userDto)
     }
 }
