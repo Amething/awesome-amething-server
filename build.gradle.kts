@@ -7,6 +7,7 @@ plugins {
 	kotlin("plugin.spring") version "1.7.22"
 	kotlin("plugin.jpa") version "1.7.22"
 	id("org.jmailen.kotlinter") version "3.14.0"
+	kotlin("kapt") version "1.8.21"
 }
 
 group = "amething"
@@ -30,7 +31,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 
 	implementation("com.querydsl:querydsl-jpa:$querydslVersion:jakarta")
-	annotationProcessor("com.querydsl:querydsl-apt:$querydslVersion:jakarta")
+	kapt("com.querydsl:querydsl-apt:$querydslVersion:jakarta")
 	annotationProcessor("jakarta.annotation:jakarta.annotation-api")
 	annotationProcessor("jakarta.persistence:jakarta.persistence-api")
 
