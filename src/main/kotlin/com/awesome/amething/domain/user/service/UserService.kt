@@ -15,6 +15,6 @@ class UserService(
         val savedUser = userRepository.save(
             userDto.toEntity(encodedPassword)
         )
-        return savedUser.id!!
+        return savedUser.id
     }
 }

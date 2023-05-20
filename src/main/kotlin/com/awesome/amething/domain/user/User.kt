@@ -41,8 +41,12 @@ class User(
     @CollectionTable(name = "roles")
     val roles: MutableList<AuthenticatorRole> = mutableListOf(AuthenticatorRole.ROLE_MEMBER),
 ) {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    lateinit val id: Long? = null,
+    private var _id: Long? = null
+
+    val id: Long
+        get() = this._id!!
 }
