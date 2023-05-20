@@ -26,11 +26,13 @@ class SecurityConfig(
             .csrf().disable()
             .httpBasic().disable()
 
+        http.headers()
+            .frameOptions()
+            .sameOrigin().and();
+
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
         http.authorizeHttpRequests()
-            //                .antMatchers("/v1/user/**").hasRole("GUEST")
-            //                .antMatchers("/v1/me/questions").hasRole("MEMBER")
             .anyRequest().permitAll()
         http.exceptionHandling()
             .accessDeniedHandler(securityAccessDeniedHandler)
