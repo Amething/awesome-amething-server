@@ -6,14 +6,10 @@ import io.jsonwebtoken.Claims
 import io.jsonwebtoken.ExpiredJwtException
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.security.Keys
+import org.springframework.stereotype.Component
 import java.time.OffsetDateTime
 import java.util.Base64
 import java.util.Date
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
-import org.springframework.security.core.Authentication
-import org.springframework.security.core.userdetails.UserDetails
-import org.springframework.security.core.userdetails.UserDetailsService
-import org.springframework.stereotype.Component
 
 @Component
 class JwtProvider(
@@ -27,7 +23,7 @@ class JwtProvider(
         val accessTokenExpireTime = Date.from(
             OffsetDateTime.now()
                 .plus(jwtProperties.accessTokenExpireTime)
-                .toInstant()
+                .toInstant(),
         )
 
         val claims: Claims = Jwts.claims().apply {
@@ -47,7 +43,7 @@ class JwtProvider(
         val refreshTokenExpireTime = Date.from(
             OffsetDateTime.now()
                 .plus(jwtProperties.refreshTokenExpireTime)
-                .toInstant()
+                .toInstant(),
         )
 
         val claims: Claims = Jwts.claims().apply {
@@ -71,7 +67,7 @@ class JwtProvider(
         return try {
             Jwts.parserBuilder()
                 .setSigningKey(
-                    Keys.hmacShaKeyFor(secretKeyEncodingBase64.toByteArray())
+                    Keys.hmacShaKeyFor(secretKeyEncodingBase64.toByteArray()),
                 ).build()
                 .parseClaimsJws(token)
                 .body

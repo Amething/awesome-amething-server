@@ -1,8 +1,8 @@
 package com.awesome.amething.global.security.filter
 
-import com.awesome.amething.global.util.Loggable
 import com.awesome.amething.global.exception.ErrorCode
 import com.awesome.amething.global.exception.model.ErrorResponse
+import com.awesome.amething.global.util.Loggable
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.jsonwebtoken.ExpiredJwtException
 import io.jsonwebtoken.JwtException
@@ -10,19 +10,18 @@ import io.jsonwebtoken.security.SignatureException
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
-import java.io.IOException
 import org.springframework.stereotype.Component
 import org.springframework.web.filter.OncePerRequestFilter
 
 @Component
 class ExceptionHandlerFilter(
-    private val objectMapper: ObjectMapper
+    private val objectMapper: ObjectMapper,
 ) : OncePerRequestFilter() {
 
     override fun doFilterInternal(
         request: HttpServletRequest,
         response: HttpServletResponse,
-        filterChain: FilterChain
+        filterChain: FilterChain,
     ) {
         try {
             filterChain.doFilter(request, response)
@@ -54,5 +53,5 @@ class ExceptionHandlerFilter(
         }
     }
 
-    companion object: Loggable
+    companion object : Loggable
 }

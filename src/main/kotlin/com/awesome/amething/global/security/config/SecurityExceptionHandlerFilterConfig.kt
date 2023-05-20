@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class SecurityExceptionHandlerFilterConfig(
-    private val exceptionHandlerFilter: ExceptionHandlerFilter
+    private val exceptionHandlerFilter: ExceptionHandlerFilter,
 ) : SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity>() {
 
     override fun configure(httpSecurity: HttpSecurity) {
