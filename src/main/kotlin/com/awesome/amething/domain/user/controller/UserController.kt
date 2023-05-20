@@ -3,8 +3,9 @@ package com.awesome.amething.domain.user.controller
 import com.awesome.amething.domain.user.dto.UserDto
 import com.awesome.amething.domain.user.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.*
 class UserController @Autowired constructor(
     private val userService: UserService,
 ) {
-    @PostMapping("/registration")
-    fun userRegistration(@RequestBody userDto: UserDto): ResponseEntity<HttpStatus> {
-        userService.userRegistration(userDto)
-        return ResponseEntity(HttpStatus.OK)
+    @PostMapping("/register")
+    fun register(
+        @RequestBody userDto: UserDto
+    ): ResponseEntity<Unit> {
+        userService.register(userDto)
+        return ResponseEntity.ok().build()
     }
 }

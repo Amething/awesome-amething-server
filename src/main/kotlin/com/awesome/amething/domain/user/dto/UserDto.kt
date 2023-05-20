@@ -8,12 +8,12 @@ data class UserDto(
     val nickName: String,
     val bio: String,
 ) {
-    fun toEntity(): User {
+    fun toEntity(password: String): User {
         return User(
-            username = username,
+            username = this.username,
             password = password,
-            nickName = nickName,
-            bio = bio,
+            nickname = this.nickName,
+            bio = this.bio,
         )
     }
 }
