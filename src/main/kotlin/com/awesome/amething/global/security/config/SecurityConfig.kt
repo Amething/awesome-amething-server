@@ -28,7 +28,7 @@ class SecurityConfig(
 
         http.headers()
             .frameOptions()
-            .sameOrigin().and();
+            .sameOrigin().and()
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
@@ -41,6 +41,7 @@ class SecurityConfig(
         http.apply(securityExceptionHandlerFilterConfig)
         return http.build()
     }
+
     @Bean
     fun passwordEncoder(): PasswordEncoder = BCryptPasswordEncoder()
 }

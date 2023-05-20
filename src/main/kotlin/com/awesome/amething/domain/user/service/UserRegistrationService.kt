@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service
 class UserRegistrationService(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder,
-){
-    fun register(userRegisterDto: UserRegisterDto): Long{
+) {
+    fun register(userRegisterDto: UserRegisterDto): Long {
         val encodedPassword = this.passwordEncoder.encode(userRegisterDto.password)
         val savedUser = userRepository.save(
-            userRegisterDto.toEntity(encodedPassword)
+            userRegisterDto.toEntity(encodedPassword),
         )
         return savedUser.id
     }

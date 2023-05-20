@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service
 
 @Service
 class AmethingUserDetailsService(
-    private val userQueryService: UserQueryService
-): UserDetailsService {
+    private val userQueryService: UserQueryService,
+) : UserDetailsService {
     override fun loadUserByUsername(username: String): UserDetails {
         val user = userQueryService.getUserByUsername(username)
         return AmethingUserDetails(user)
