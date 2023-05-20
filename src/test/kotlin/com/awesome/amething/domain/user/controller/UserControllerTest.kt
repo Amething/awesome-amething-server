@@ -1,6 +1,6 @@
 package com.awesome.amething.domain.user.controller
 
-import com.awesome.amething.domain.user.dto.UserDto
+import com.awesome.amething.domain.user.dto.UserRegisterDto
 import com.awesome.amething.global.util.Loggable
 import jakarta.transaction.Transactional
 import org.junit.jupiter.api.Test
@@ -16,7 +16,7 @@ internal class UserControllerTest(
 
     @Test
     fun register() {
-        val userDto = UserDto("user", "registration", "test", "controller")
-        userController.register(userDto)
+        val userRegisterDto = UserRegisterDto("user", "registration", "test", "controller")
+        userController.register(userRegisterDto)
     }
 }

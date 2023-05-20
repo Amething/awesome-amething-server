@@ -1,19 +1,19 @@
 package com.awesome.amething.domain.user.service
 
-import com.awesome.amething.domain.user.dto.UserDto
+import com.awesome.amething.domain.user.dto.UserRegisterDto
 import com.awesome.amething.domain.user.repository.UserRepository
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 
 @Service
-class UserService(
+class UserRegistrationService(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder,
 ){
-    fun register(userDto: UserDto): Long{
-        val encodedPassword = this.passwordEncoder.encode(userDto.password)
+    fun register(userRegisterDto: UserRegisterDto): Long{
+        val encodedPassword = this.passwordEncoder.encode(userRegisterDto.password)
         val savedUser = userRepository.save(
-            userDto.toEntity(encodedPassword)
+            userRegisterDto.toEntity(encodedPassword)
         )
         return savedUser.id
     }

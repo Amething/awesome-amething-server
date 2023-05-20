@@ -3,7 +3,7 @@ package com.awesome.amething.domain.user.dto
 import com.awesome.amething.domain.user.User
 import jakarta.validation.constraints.NotBlank
 
-data class UserDto(
+data class UserRegisterDto(
     @field:NotBlank
     val username: String,
     @field:NotBlank
