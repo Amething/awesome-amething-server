@@ -14,13 +14,15 @@ class UserProfileService(
 ) {
     @Transactional(readOnly = true)
     fun findUserProfile(username: String): UserProfile {
-        val user = (userRepository.findByUsername(username)
-            ?: throw AmethingException(ErrorCode.USER_NOT_FOUND))
+        val user = (
+            userRepository.findByUsername(username)
+                ?: throw AmethingException(ErrorCode.USER_NOT_FOUND)
+            )
         return UserProfile(
             username = user.username,
             nickname = user.nickname,
             bio = user.bio,
-            profilePicture = user.profilePicture
+            profilePicture = user.profilePicture,
         )
     }
     fun updateUserProfile(username: String, model: UpdateUserProfileModel.Model) {
@@ -29,7 +31,7 @@ class UserProfileService(
         user.updateProfile(
             nickname = model.nickname,
             bio = model.bio,
-            profilePicture = model.profilePicture
+            profilePicture = model.profilePicture,
         )
     }
 }

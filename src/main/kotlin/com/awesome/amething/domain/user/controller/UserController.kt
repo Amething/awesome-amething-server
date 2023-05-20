@@ -52,11 +52,12 @@ class UserController @Autowired constructor(
         @AuthenticationPrincipal
         principal: UserDetails,
     ): ResponseEntity<Unit> {
-        if(username == principal.username)
+        if (username == principal.username) {
             throw AmethingException(ErrorCode.INVALID_ACCESS)
+        }
         userProfileService.updateUserProfile(
             username = username,
-            model = request
+            model = request,
         )
         return ResponseEntity.ok().build()
     }
