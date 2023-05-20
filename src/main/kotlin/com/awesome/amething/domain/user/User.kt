@@ -14,13 +14,8 @@ import jakarta.persistence.JoinColumn
 import jakarta.persistence.Table
 
 @Entity
-@Table(name = "user")
+@Table(name = "amething_user")
 class User(
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    val id: Long? = null,
-
     @Column(name = "username", nullable = false, unique = true)
     var username: String = "username",
 
@@ -28,7 +23,7 @@ class User(
     var password: String = "password",
 
     @Column(name = "user_nickname")
-    var nickName: String = "nickname",
+    var nickname: String = "nickname",
 
     @Column(name = "user_bio")
     var bio: String = "bio",
@@ -45,4 +40,13 @@ class User(
     @Column(name = "role")
     @CollectionTable(name = "roles")
     val roles: MutableList<AuthenticatorRole> = mutableListOf(AuthenticatorRole.ROLE_MEMBER),
-)
+) {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private var _id: Long? = null
+
+    val id: Long
+        get() = this._id!!
+}
