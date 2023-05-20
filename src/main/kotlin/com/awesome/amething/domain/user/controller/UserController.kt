@@ -2,6 +2,7 @@ package com.awesome.amething.domain.user.controller
 
 import com.awesome.amething.domain.user.dto.UserDto
 import com.awesome.amething.domain.user.service.UserService
+import jakarta.validation.Valid
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
@@ -15,7 +16,9 @@ class UserController @Autowired constructor(
 ) {
     @PostMapping("/register")
     fun register(
-        @RequestBody userDto: UserDto
+        @RequestBody
+        @Valid
+        userDto: UserDto
     ): ResponseEntity<Unit> {
         userService.register(userDto)
         return ResponseEntity.ok().build()
