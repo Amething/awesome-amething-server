@@ -25,8 +25,9 @@ class JwtAuthorizationFilter(
         val authorizationHeaderValue = request.getHeader(AUTHORIZATION_HEADER)
         if (!authorizationHeaderValue.isNullOrEmpty()) {
             val jwt = resolveToken(authorizationHeaderValue)
-            if(!jwtProvider.validateToken(jwt))
+            if (!jwtProvider.validateToken(jwt)) {
                 throw JwtException("Invalid Token")
+            }
             SecurityContextHolder.getContext().authentication = getAuthentication(jwt)
         }
         filterChain.doFilter(request, response)

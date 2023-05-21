@@ -38,7 +38,7 @@ class ExceptionHandlerFilter(
         } catch (ex: IllegalArgumentException) {
             logger.debug("================= [ ExceptionHandlerFilter ] 에서 JwtException 발생 ===================", ex)
             setErrorResponse(response, ErrorCode.INVALID_TOKEN)
-        } catch(ex: UsernameNotFoundException) {
+        } catch (ex: UsernameNotFoundException) {
             setErrorResponse(response, ErrorCode.USER_NOT_FOUND)
         } catch (ex: Exception) {
             logger.error("================= [ ExceptionHandlerFilter ] 에서 Exception 발생 ===================", ex)

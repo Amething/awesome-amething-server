@@ -10,12 +10,11 @@ import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.io.Encoders
 import io.jsonwebtoken.security.Keys
+import org.springframework.stereotype.Component
 import java.security.Key
 import java.time.OffsetDateTime
 import java.util.Base64
 import java.util.Date
-import org.springframework.stereotype.Component
-
 
 @Component
 class JwtProvider(
@@ -103,5 +102,5 @@ class JwtProvider(
         val keyBytes = Encoders.BASE64.encode(jwtProperties.secretKey.toByteArray())
         return Keys.hmacShaKeyFor(keyBytes.toByteArray())
     }
-    companion object: Loggable
+    companion object : Loggable
 }

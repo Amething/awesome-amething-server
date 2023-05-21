@@ -28,7 +28,6 @@ class AmethingExceptionHandler {
         }
     }
 
-
     @ExceptionHandler(AmethingException::class)
     fun handleAmethingException(e: AmethingException): ResponseEntity<ErrorResponse> {
         if (e.errorCode == ErrorCode.UNKNOWN_ERROR) {
