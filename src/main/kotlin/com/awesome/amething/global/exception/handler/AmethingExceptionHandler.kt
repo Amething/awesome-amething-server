@@ -35,7 +35,7 @@ class AmethingExceptionHandler {
         }
         return ResponseEntity
             .status(e.errorCode.httpStatus)
-            .body(ErrorResponse(e.errorCode))
+            .body(ErrorResponse(e.errorCode, e.misc))
     }
 
     @ExceptionHandler(MethodArgumentNotValidException::class)
