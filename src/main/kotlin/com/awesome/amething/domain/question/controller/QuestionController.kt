@@ -9,7 +9,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController
 class QuestionController(
     private val questionQueryService: QuestionQueryService,
 ) {
-
     @GetMapping
     fun getQuestion(
         @PathVariable
@@ -26,10 +24,9 @@ class QuestionController(
         @AuthenticationPrincipal
         principal: UserDetails,
     ): ResponseEntity<QuestionQueryModel> {
-        if(username != principal.username) throw AmethingException(ErrorCode.INVALID_ACCESS)
-
+        if (username != principal.username) throw AmethingException(ErrorCode.INVALID_ACCESS)
         return ResponseEntity.ok(
-            questionQueryService.findQuestion(username)
+            questionQueryService.findQuestion(username),
         )
     }
 }

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class QuestionQueryService(
-    private val questionRepository: QuestionRepository
+    private val questionRepository: QuestionRepository,
 ) {
 
     fun findQuestion(username: String): QuestionQueryModel {

@@ -1,4 +1,4 @@
-package com.awesome.amething.domain.question.repository;
+package com.awesome.amething.domain.question.repository
 
 import com.awesome.amething.domain.question.Question
 import org.springframework.data.jpa.repository.JpaRepository

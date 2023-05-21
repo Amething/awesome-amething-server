@@ -5,5 +5,5 @@ import com.fasterxml.jackson.annotation.JsonInclude
 data class QuestionModel(
     val title: String,
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    val answer: String? = null
+    val answer: String? = null,
 )
