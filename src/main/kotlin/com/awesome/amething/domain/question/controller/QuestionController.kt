@@ -2,6 +2,7 @@ package com.awesome.amething.domain.question.controller
 
 import com.awesome.amething.domain.question.model.QuestionQueryModel
 import com.awesome.amething.domain.question.service.QuestionQueryService
+import com.awesome.amething.global.enums.QuestionType
 import com.awesome.amething.global.exception.AmethingException
 import com.awesome.amething.global.exception.ErrorCode
 import org.springframework.http.ResponseEntity
@@ -13,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/v1/user/{username}/question")
+@RequestMapping("/v1/user/{username}")
 class QuestionController(
     private val questionQueryService: QuestionQueryService,
 ) {
-    @GetMapping
+    @GetMapping("/question")
     fun getQuestion(
         @PathVariable
         username: String,
@@ -26,7 +27,7 @@ class QuestionController(
     ): ResponseEntity<QuestionQueryModel> {
         if (username != principal.username) throw AmethingException(ErrorCode.INVALID_ACCESS)
         return ResponseEntity.ok(
-            questionQueryService.findQuestion(username),
+            questionQueryService.findQuestion(username, QuestionType.UNPIN),
         )
     }
 }
