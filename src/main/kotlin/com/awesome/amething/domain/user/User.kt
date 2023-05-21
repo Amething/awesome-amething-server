@@ -17,19 +17,19 @@ import jakarta.persistence.Table
 @Table(name = "amething_user")
 class User(
     @Column(name = "username", nullable = false, unique = true)
-    var username: String = "username",
+    var username: String,
 
     @Column(name = "user_password", nullable = false)
-    var password: String = "password",
+    var password: String,
 
     @Column(name = "user_nickname")
-    var nickname: String = "nickname",
+    var nickname: String,
 
     @Column(name = "user_bio")
-    var bio: String = "bio",
+    var bio: String,
 
     @Column(name = "user_profile_picture")
-    var profilePicture: String = "profilePicture",
+    var profilePicture: String? = null,
 
     @Column(name = "user_refresh_token")
     var refreshToken: String = "refreshToken",
