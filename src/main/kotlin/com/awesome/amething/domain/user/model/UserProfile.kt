@@ -4,5 +4,5 @@ data class UserProfile(
     val username: String,
     val nickname: String,
     val bio: String,
-    val profilePicture: String,
+    val profilePicture: String?,
 )
