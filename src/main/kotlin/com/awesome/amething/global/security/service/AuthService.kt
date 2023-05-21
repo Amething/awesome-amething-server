@@ -33,7 +33,7 @@ class AuthService(
         val roles = userInfo.authorities.map {
             AuthenticatorRole.valueOf(it.authority)
         }
-        return jwtProvider.createAccessAndRefreshToken(roles)
+        return jwtProvider.createAccessAndRefreshToken(roles, username = model.username)
             .toModel()
     }
 

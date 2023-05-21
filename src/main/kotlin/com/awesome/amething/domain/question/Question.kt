@@ -19,11 +19,6 @@ import org.hibernate.annotations.OnDeleteAction
 @Entity
 @Table(name = "quesion")
 class Question(
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "question_id")
-    val id: Long? = null,
-
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "user_id")
@@ -35,4 +30,12 @@ class Question(
     @Enumerated(value = EnumType.STRING)
     @Column(name = "question_type")
     var questionType: QuestionType = QuestionType.UNPIN,
-)
+) {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "question_id")
+    private var _id: Long? = null
+
+    val id: Long
+        get() = _id!!
+}

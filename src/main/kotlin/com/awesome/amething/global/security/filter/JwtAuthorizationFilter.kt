@@ -23,8 +23,11 @@ class JwtAuthorizationFilter(
         filterChain: FilterChain,
     ) {
         val authorizationHeaderValue = request.getHeader(AUTHORIZATION_HEADER)
-        if (!authorizationHeaderValue.isNullOrEmpty() && jwtProvider.validateToken(authorizationHeaderValue)) {
+        if (!authorizationHeaderValue.isNullOrEmpty()) {
             val jwt = resolveToken(authorizationHeaderValue)
+            if (!jwtProvider.validateToken(jwt)) {
+                throw JwtException("Invalid Token")
+            }
             SecurityContextHolder.getContext().authentication = getAuthentication(jwt)
         }
         filterChain.doFilter(request, response)
@@ -32,14 +35,14 @@ class JwtAuthorizationFilter(
 
     private fun resolveToken(headerValue: String): String {
         return if (headerValue.isNotEmpty() && headerValue.startsWith(PREFIX)) {
-            headerValue.substring(7)
+            headerValue.removePrefix(PREFIX)
         } else {
             throw JwtException("Invalid Token")
         }
     }
 
     private fun getAuthentication(accessToken: String): Authentication {
-        val userDetails: UserDetails = userDetails.loadUserByUsername(jwtProvider.getOauthId(accessToken))
+        val userDetails: UserDetails = userDetails.loadUserByUsername(jwtProvider.getUsername(accessToken))
         return UsernamePasswordAuthenticationToken(userDetails, "", userDetails.authorities)
     }
 
