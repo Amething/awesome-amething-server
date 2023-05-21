@@ -10,7 +10,7 @@ data class QuestionQueryModel(
             entities: List<Question>,
         ): QuestionQueryModel = QuestionQueryModel(
             questions = entities.map {
-                QuestionModel(it.title)
+                QuestionModel(it.id, it.title)
             },
         )
     }
