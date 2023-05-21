@@ -4,7 +4,6 @@ import com.awesome.amething.domain.question.Question
 import com.awesome.amething.domain.question.model.QuestionQueryModel
 import com.awesome.amething.domain.question.repository.QuestionRepository
 import com.awesome.amething.global.enums.QuestionType
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

@@ -23,10 +23,10 @@ class AnswerController(
         @RequestBody
         request: AnswerCreateModel.Model,
         @AuthenticationPrincipal
-        userDetails: UserDetails
+        userDetails: UserDetails,
     ): ResponseEntity<AnswerCreateModel.Result> {
         return ResponseEntity.ok(
-            answerService.createAnswer(userDetails.username, questionId, request)
+            answerService.createAnswer(userDetails.username, questionId, request),
         )
     }
 }

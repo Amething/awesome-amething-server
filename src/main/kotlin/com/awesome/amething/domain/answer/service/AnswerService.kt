@@ -20,7 +20,7 @@ class AnswerService(
         val question = questionQueryService.findQuestionByIdAndUsername(questionId, username)
             ?: throw AmethingException(ErrorCode.QUESTION_NOT_FOUND)
         val savedAnswer = answerRepository.save(
-            Answer(question = question, content = model.content)
+            Answer(question = question, content = model.content),
         )
         return AnswerCreateModel.Result(
             answerId = savedAnswer.id,
