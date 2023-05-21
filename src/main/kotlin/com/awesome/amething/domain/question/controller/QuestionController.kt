@@ -30,4 +30,14 @@ class QuestionController(
             questionQueryService.findQuestion(username, QuestionType.UNPIN),
         )
     }
+
+    @GetMapping("/pin-question")
+    fun getPinQuestion(
+        @PathVariable
+        username: String,
+    ): ResponseEntity<QuestionQueryModel> {
+        return ResponseEntity.ok(
+            questionQueryService.findQuestion(username, QuestionType.PIN),
+        )
+    }
 }
