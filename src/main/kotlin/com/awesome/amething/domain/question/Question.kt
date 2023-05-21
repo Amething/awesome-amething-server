@@ -1,7 +1,9 @@
 package com.awesome.amething.domain.question
 
+import com.awesome.amething.domain.answer.Answer
 import com.awesome.amething.domain.user.User
 import com.awesome.amething.global.enums.QuestionType
+import jakarta.persistence.CascadeType
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
@@ -12,6 +14,7 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
+import jakarta.persistence.OneToOne
 import jakarta.persistence.Table
 import org.hibernate.annotations.OnDelete
 import org.hibernate.annotations.OnDeleteAction
@@ -30,6 +33,9 @@ class Question(
     @Enumerated(value = EnumType.STRING)
     @Column(name = "question_type")
     var questionType: QuestionType = QuestionType.UNPIN,
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "question")
+    val answer: Answer? = null,
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
