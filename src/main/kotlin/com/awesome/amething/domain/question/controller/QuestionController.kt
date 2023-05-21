@@ -1,6 +1,5 @@
 package com.awesome.amething.domain.question.controller
 
-import com.awesome.amething.domain.question.model.QuestionModel
 import com.awesome.amething.domain.question.model.QuestionQueryModel
 import com.awesome.amething.domain.question.model.QuestionSaveModel
 import com.awesome.amething.domain.question.service.QuestionCommandService
@@ -40,9 +39,9 @@ class QuestionController(
     fun addQuestion(
         @PathVariable
         username: String,
-        request: QuestionSaveModel.Model
+        request: QuestionSaveModel.Model,
     ): ResponseEntity<QuestionSaveModel.Result> = ResponseEntity.ok(
-        questionCommandService.addQuestion(username, request)
+        questionCommandService.addQuestion(username, request),
     )
 
     @GetMapping("/pin-question")

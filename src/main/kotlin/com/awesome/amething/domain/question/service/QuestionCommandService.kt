@@ -14,18 +14,19 @@ class QuestionCommandService(
     private val userQueryService: UserQueryService,
 ) {
     fun addQuestion(username: String, model: QuestionSaveModel.Model): QuestionSaveModel.Result {
-        val user = (userQueryService.getUserByUsername(username)
-            ?: throw AmethingException(ErrorCode.USER_NOT_FOUND))
+        val user = (
+            userQueryService.getUserByUsername(username)
+                ?: throw AmethingException(ErrorCode.USER_NOT_FOUND)
+            )
         val savedQuestion = questionRepository.save(
             Question(
                 title = model.title,
                 user = user,
-            )
+            ),
         )
         return QuestionSaveModel.Result(
             id = savedQuestion.id,
             title = savedQuestion.title,
         )
     }
-
 }
