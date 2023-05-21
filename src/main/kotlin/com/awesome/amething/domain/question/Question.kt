@@ -38,4 +38,7 @@ class Question(
 
     val id: Long
         get() = _id!!
+    fun addAnswer() {
+        questionType = QuestionType.PIN
+    }
 }
