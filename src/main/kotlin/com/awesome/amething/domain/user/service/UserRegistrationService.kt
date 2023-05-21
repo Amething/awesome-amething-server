@@ -22,10 +22,11 @@ class UserRegistrationService(
     }
 
     private fun checkDuplicateUsername(userRegisterDto: UserRegisterDto) {
-        if (userRepository.existsByUsername(userRegisterDto.username))
+        if (userRepository.existsByUsername(userRegisterDto.username)) {
             throw AmethingException(
                 errorCode = ErrorCode.DUPLICATED_USERNAME,
-                misc = mapOf("username" to userRegisterDto.username)
+                misc = mapOf("username" to userRegisterDto.username),
             )
+        }
     }
 }
