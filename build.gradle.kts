@@ -53,3 +53,10 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+/**
+ * plain jar is not needed
+ */
+tasks.withType<Jar> {
+	enabled = false
+}
