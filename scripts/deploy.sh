@@ -2,6 +2,12 @@
 
 BUILD_JAR=$(ls /home/ec2-user/action/build/libs/*.jar)
 JAR_NAME=$(basename $BUILD_JAR)
+
+if [ ! -f "$BUILD_JAR" ]
+ then echo ">>> 빌드된 JAR 파일이 존재하지 않습니다." >> /home/ec2-user/action/deploy.log
+  exit 1
+fi
+
 echo ">>> build 파일명: $JAR_NAME" >> /home/ec2-user/action/deploy.log
 
 echo ">>> build 파일 복사" >> /home/ec2-user/action/deploy.log
