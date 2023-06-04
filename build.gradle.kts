@@ -58,5 +58,5 @@ tasks.withType<Test> {
  * plain jar is not needed
  */
 tasks.withType<Jar> {
-	enabled = false
+	archiveClassifier.set("")
 }
